@@ -1,0 +1,35 @@
+# Build artefakty
+bin/
+github-todoist-sync
+
+# Konfigurační soubory s tokeny
+.env
+
+# Logy
+logs/
+*.log
+
+# Daemon PID soubor
+.daemon.pid
+
+# Go vendor
+vendor/
+
+# IDE soubory
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS soubory
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage.out
+coverage.html
+
+# Temporary files
+tmp/
+temp/
