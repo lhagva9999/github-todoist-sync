@@ -179,8 +179,3 @@ make github-sync
 ## License
 
 MIT License — see LICENSE
-
----
-
-**Recommended GitHub topics:**  
-`github`, `github-issues`, `todoist`, `todoist-api`, `github-api`, `sync`, `synchronization`, `bidirectional-sync`, `task-management`, `productivity`, `cli`, `automation`, `integration`, `go`, `golang`, `api-client`, `dev-tools`, `daemon`, `opensource`, `mit-license`
